@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentation - Balen Shah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; overflow: hidden; font-family: 'Inter', sans-serif; background: #0a0a0f; color: #fff; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #fff;
+            touch-action: pan-y;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
         /* Language Toggle */
         .lang-toggle {
             position: fixed;
@@ -20,12 +41,12 @@
             right: 20px;
             display: flex;
             z-index: 200;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 25px;
             padding: 4px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .lang-btn {
             padding: 8px 16px;
             border: none;
@@ -36,24 +57,38 @@
             font-size: 13px;
             transition: all 0.3s;
         }
-        
+
         .lang-toggle .lang-btn.active {
             background: #C9A227;
             color: #000;
         }
-        
+
         .lang-toggle .lang-btn:not(.active) {
             background: transparent;
             color: #6b7280;
         }
-        
+
         /* Text hiding */
-        .jp { display: none; }
-        .show-jp .en { display: none; }
-        .show-jp .jp { display: inline; }
-        .show-jp .jp-block { display: block; }
-        .show-jp .en-block { display: none; }
-        
+        .jp {
+            display: none;
+        }
+
+        .show-jp .en {
+            display: none;
+        }
+
+        .show-jp .jp {
+            display: inline;
+        }
+
+        .show-jp .jp-block {
+            display: block;
+        }
+
+        .show-jp .en-block {
+            display: none;
+        }
+
         .slide {
             display: none;
             width: 100vw;
@@ -63,31 +98,34 @@
             left: 0;
             padding: 60px 80px;
         }
-        
-        .slide.active { display: flex; flex-direction: column; }
-        
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
         .slide-number {
             position: absolute;
             bottom: 30px;
             right: 40px;
             font-size: 14px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
-        
+
         .attribution {
             position: absolute;
             top: 30px;
             left: 40px;
             font-size: 12px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
         }
-        
+
         .title-slide {
             justify-content: center;
             align-items: center;
             text-align: center;
         }
-        
+
         .title-slide h1 {
             font-size: 72px;
             margin: 20px 0;
@@ -95,40 +133,40 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .title-slide .subtitle {
             font-size: 28px;
             color: #9ca3af;
             margin-bottom: 10px;
         }
-        
+
         .title-slide .tagline {
             font-size: 18px;
             color: #6b7280;
             max-width: 500px;
         }
-        
+
         .title-slide .date {
             margin-top: 40px;
             padding: 12px 30px;
-            border: 1px solid rgba(201,162,39,0.3);
+            border: 1px solid rgba(201, 162, 39, 0.3);
             border-radius: 30px;
             color: #C9A227;
         }
-        
+
         .content-slide h2 {
             font-size: 42px;
             margin-bottom: 50px;
             color: #C9A227;
         }
-        
+
         .content-slide .content {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -136,61 +174,61 @@
             align-items: center;
             flex: 1;
         }
-        
+
         .card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 20px;
         }
-        
+
         .card-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-        
+
         .card-grid-2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
-        
+
         .card h3 {
             font-size: 32px;
             margin-bottom: 10px;
         }
-        
+
         .card p {
             color: #9ca3af;
             font-size: 16px;
         }
-        
+
         .stat-card {
             text-align: center;
             padding: 40px;
         }
-        
+
         .stat-card .number {
             font-size: 48px;
             font-weight: 700;
             color: #C9A227;
             margin-bottom: 8px;
         }
-        
+
         .stat-card .label {
             color: #9ca3af;
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .timeline {
             position: relative;
             padding-left: 40px;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -200,12 +238,12 @@
             width: 2px;
             background: linear-gradient(180deg, #C9A227, transparent);
         }
-        
+
         .timeline-item {
             position: relative;
             padding-bottom: 30px;
         }
-        
+
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -216,67 +254,67 @@
             border-radius: 50%;
             background: #C9A227;
         }
-        
+
         .timeline-item .year {
             color: #C9A227;
             font-weight: 600;
             margin-bottom: 5px;
         }
-        
+
         .timeline-item h4 {
             font-size: 18px;
             margin-bottom: 5px;
         }
-        
+
         .timeline-item p {
             color: #6b7280;
             font-size: 14px;
         }
-        
+
         .profile-img {
             width: 100%;
             height: 450px;
             object-fit: cover;
             border-radius: 16px;
         }
-        
+
         .quote {
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             border-left: 3px solid #C9A227;
             padding: 30px;
             margin: 30px 0;
             font-style: italic;
             color: #d1d5db;
         }
-        
+
         .quote-author {
             color: #C9A227;
             margin-top: 15px;
         }
-        
+
         .thankyou-slide {
             justify-content: center;
             align-items: center;
             text-align: center;
         }
-        
+
         .thankyou-slide h1 {
             font-size: 64px;
             margin-bottom: 20px;
         }
-        
+
         .thankyou-slide p {
             font-size: 20px;
             color: #9ca3af;
             margin-bottom: 40px;
         }
-        
+
         .icon-lg {
             font-size: 36px;
             color: #C9A227;
             margin-bottom: 15px;
         }
-        
+
         .nav-dots {
             position: fixed;
             bottom: 25px;
@@ -286,21 +324,21 @@
             gap: 10px;
             z-index: 100;
         }
-        
+
         .nav-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s;
         }
-        
+
         .nav-dot.active {
             background: #C9A227;
             transform: scale(1.3);
         }
-        
+
         .nav-btn {
             position: fixed;
             top: 50%;
@@ -308,8 +346,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #fff;
             cursor: pointer;
             display: flex;
@@ -319,16 +357,275 @@
             transition: all 0.3s;
             z-index: 100;
         }
-        
+
         .nav-btn:hover {
             background: #C9A227;
             color: #000;
         }
-        
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 50px;
+            }
+            .title-slide h1 {
+                font-size: 56px;
+            }
+            .title-slide .subtitle {
+                font-size: 22px;
+            }
+            .content-slide h2 {
+                font-size: 36px;
+                margin-bottom: 35px;
+            }
+            .two-col {
+                gap: 40px;
+            }
+            .profile-img {
+                height: 350px;
+            }
+            .card h3 {
+                font-size: 26px;
+            }
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .card-grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html, body {
+                overflow-y: auto;
+                height: auto;
+            }
+            .slide {
+                padding: 30px 25px 80px;
+                overflow-y: auto;
+            }
+            .title-slide h1 {
+                font-size: 40px;
+                margin: 15px 0;
+            }
+            .title-slide .subtitle {
+                font-size: 18px;
+            }
+            .title-slide .tagline {
+                font-size: 14px;
+                max-width: 300px;
+            }
+            .title-slide .date {
+                margin-top: 25px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .content-slide h2 {
+                font-size: 28px;
+                margin-bottom: 25px;
+            }
+            .content-slide .content {
+                justify-content: flex-start;
+                padding-top: 10px;
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .profile-img {
+                height: 280px;
+                order: -1;
+            }
+            .card {
+                padding: 20px;
+            }
+            .card h3 {
+                font-size: 22px;
+            }
+            .card p {
+                font-size: 14px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .card-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .stat-card {
+                padding: 25px;
+            }
+            .stat-card .number {
+                font-size: 36px;
+            }
+            .stat-card .label {
+                font-size: 12px;
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline::before {
+                left: -15px;
+            }
+            .timeline-item::before {
+                left: -30px;
+                width: 10px;
+                height: 10px;
+            }
+            .timeline-item h4 {
+                font-size: 16px;
+            }
+            .timeline-item p {
+                font-size: 13px;
+            }
+            .icon-lg {
+                font-size: 28px;
+            }
+            .quote {
+                padding: 20px;
+                margin: 20px 0;
+                font-size: 14px;
+            }
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .prev-btn {
+                left: 10px;
+            }
+            .next-btn {
+                right: 10px;
+            }
+            .slide-number {
+                bottom: 20px;
+                right: 20px;
+                font-size: 12px;
+            }
+            .attribution {
+                left: 20px;
+                top: 20px;
+                font-size: 10px;
+            }
+            .lang-toggle {
+                top: 10px;
+                right: 10px;
+            }
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+            .thankyou-slide h1 {
+                font-size: 42px;
+            }
+            .thankyou-slide p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 25px 18px 70px;
+            }
+            .title-slide h1 {
+                font-size: 32px;
+            }
+            .title-slide .subtitle {
+                font-size: 15px;
+            }
+            .title-slide .tagline {
+                font-size: 12px;
+                max-width: 250px;
+            }
+            .content-slide h2 {
+                font-size: 24px;
+            }
+            .profile-img {
+                height: 220px;
+            }
+            .card h3 {
+                font-size: 18px;
+            }
+            .card p {
+                font-size: 13px;
+            }
+            .stat-card {
+                padding: 20px;
+            }
+            .stat-card .number {
+                font-size: 28px;
+            }
+            .stat-card .label {
+                font-size: 10px;
+            }
+            .timeline-item .year {
+                font-size: 14px;
+            }
+            .timeline-item h4 {
+                font-size: 14px;
+            }
+            .timeline-item p {
+                font-size: 12px;
+            }
+            .icon-lg {
+                font-size: 24px;
+            }
+            .quote {
+                font-size: 13px;
+            }
+            .nav-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+            .lang-toggle {
+                top: 8px;
+                right: 8px;
+            }
+            .lang-btn {
+                padding: 5px 10px;
+                font-size: 10px;
+            }
+            .thankyou-slide h1 {
+                font-size: 36px;
+            }
+            .thankyou-slide p {
+                font-size: 14px;
+            }
+            .card [style*="padding: 8px 20px"] {
+                padding: 6px 14px !important;
+                font-size: 12px !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .title-slide h1 {
+                font-size: 28px;
+            }
+            .title-slide .subtitle {
+                font-size: 13px;
+            }
+            .content-slide h2 {
+                font-size: 20px;
+            }
+            .profile-img {
+                height: 180px;
+            }
+            .stat-card .number {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Language Toggle -->
     <div class="lang-toggle">
@@ -338,17 +635,21 @@
 
     <!-- Slide 1: Title -->
     <section class="slide title-slide active" data-index="0">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h1>Balen Shah</h1>
         <p class="subtitle"><span class="en">नेपालको प्रधानमन्त्री</span><span class="jp">ネパールの首相</span></p>
-        <p class="tagline"><span class="en">Leading Nepal toward prosperity, stability, and economic transformation</span><span class="jp">ネパールの繁栄、 stability、経済変革へのリーダーシップ</span></p>
-        <div class="date"><span class="en">2024 - Present | 25th Prime Minister</span><span class="jp">2024年 - 現在 | 第25代首相</span></div>
+        <p class="tagline"><span class="en">Leading Nepal toward prosperity, stability, and economic
+                transformation</span><span class="jp">ネパールの繁栄、 stability、経済変革へのリーダーシップ</span></p>
+        <div class="date"><span class="en">2024 - Present | 25th Prime Minister</span><span class="jp">2024年 - 現在 |
+                第25代首相</span></div>
         <div class="slide-number">1 / 8</div>
     </section>
 
     <!-- Slide 2: Introduction -->
     <section class="slide content-slide" data-index="1">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h2><span class="en">Overview</span><span class="jp">概要</span></h2>
         <div class="content">
             <div class="card-grid">
@@ -371,7 +672,8 @@
 
     <!-- Slide 3: Profile -->
     <section class="slide content-slide" data-index="2">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h2><span class="en">Profile</span><span class="jp">プロフィール</span></h2>
         <div class="content">
             <div class="two-col">
@@ -379,15 +681,26 @@
                     <img src="assets/balen1.jpg" alt="Balen Shah" class="profile-img">
                 </div>
                 <div>
-                    <h3 style="font-size: 36px; margin-bottom: 20px;"><span class="en">The Youngest</span><span class="jp">最年少の</span><br><span class="en">Prime Minister</span><span class="jp">首相</span></h3>
+                    <h3 style="font-size: 36px; margin-bottom: 20px;"><span class="en">The Youngest</span><span
+                            class="jp">最年少の</span><br><span class="en">Prime Minister</span><span class="jp">首相</span>
+                    </h3>
                     <p style="color: #9ca3af; line-height: 1.8; margin-bottom: 25px;">
-                        <span class="en">At just 32 years old, Balen Shah became the youngest Prime Minister in Nepal's history in 2024. A civil engineer by training from IOE Paschimanchal Campus, he brings technical expertise and fresh vision to lead Nepal into a new era of development.</span>
-                        <span class="jp">バレン・シャーはわずか32歳で、2024年にネパールの史上最年少の首相となりました。IOEパシムァンチャル校出身の土木エンジニアであり、技術的な専門知識と新たなビジョンを持ってネパールの新しい開発時代を導いています。</span>
+                        <span class="en">At just 32 years old, Balen Shah became the youngest Prime Minister in Nepal's
+                            history in 2024. A civil engineer by training from IOE Paschimanchal Campus, he brings
+                            technical expertise and fresh vision to lead Nepal into a new era of development.</span>
+                        <span
+                            class="jp">バレン・シャーはわずか32歳で、2024年にネパールの史上最年少の首相となりました。IOEパシムァンチャル校出身の土木エンジニアであり、技術的な専門知識と新たなビジョンを持ってネパールの新しい開発時代を導いています。</span>
                     </p>
                     <div style="display: flex; gap: 15px;">
-                        <span style="padding: 8px 20px; background: rgba(201,162,39,0.1); color: #C9A227; border-radius: 20px; font-size: 14px;"><span class="en">Civil Engineer</span><span class="jp">土木エンジニア</span></span>
-                        <span style="padding: 8px 20px; background: rgba(201,162,39,0.1); color: #C9A227; border-radius: 20px; font-size: 14px;"><span class="en">Age 32</span><span class="jp">32歳</span></span>
-                        <span style="padding: 8px 20px; background: rgba(201,162,39,0.1); color: #C9A227; border-radius: 20px; font-size: 14px;"><span class="en">2024 Appointed</span><span class="jp">2024年任命</span></span>
+                        <span
+                            style="padding: 8px 20px; background: rgba(201,162,39,0.1); color: #C9A227; border-radius: 20px; font-size: 14px;"><span
+                                class="en">Civil Engineer</span><span class="jp">土木エンジニア</span></span>
+                        <span
+                            style="padding: 8px 20px; background: rgba(201,162,39,0.1); color: #C9A227; border-radius: 20px; font-size: 14px;"><span
+                                class="en">Age 32</span><span class="jp">32歳</span></span>
+                        <span
+                            style="padding: 8px 20px; background: rgba(201,162,39,0.1); color: #C9A227; border-radius: 20px; font-size: 14px;"><span
+                                class="en">2024 Appointed</span><span class="jp">2024年任命</span></span>
                     </div>
                 </div>
             </div>
@@ -397,14 +710,16 @@
 
     <!-- Slide 4: Journey -->
     <section class="slide content-slide" data-index="3">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h2><span class="en">Political Journey</span><span class="jp">政治キャリア</span></h2>
         <div class="content">
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="year">2024</div>
                     <h4><span class="en">Prime Minister</span><span class="jp">首相</span></h4>
-                    <p><span class="en">Appointed as 25th Prime Minister of Nepal</span><span class="jp">第25代首相に就任</span></p>
+                    <p><span class="en">Appointed as 25th Prime Minister of Nepal</span><span
+                            class="jp">第25代首相に就任</span></p>
                 </div>
                 <div class="timeline-item">
                     <div class="year">2022</div>
@@ -423,29 +738,34 @@
 
     <!-- Slide 5: Initiatives -->
     <section class="slide content-slide" data-index="4">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h2><span class="en">Key Initiatives</span><span class="jp">主要施策</span></h2>
         <div class="content">
             <div class="card-grid-2">
                 <div class="card">
                     <i class="bi bi-cash-stack icon-lg"></i>
                     <h3><span class="en">Economic Growth</span><span class="jp">経済成長</span></h3>
-                    <p><span class="en">GDP growth target of 10%, tourism promotion, and foreign investment</span><span class="jp">GDP成長率10%目標、観光促進Foreign投資誘致</span></p>
+                    <p><span class="en">GDP growth target of 10%, tourism promotion, and foreign investment</span><span
+                            class="jp">GDP成長率10%目標、観光促進Foreign投資誘致</span></p>
                 </div>
                 <div class="card">
                     <i class="bi bi-lightning-charge-fill icon-lg"></i>
                     <h3><span class="en">Infrastructure</span><span class="jp">インフラ整備</span></h3>
-                    <p><span class="en">Highways, airports, and hydropower development</span><span class="jp">道路、空港、水力発電開発</span></p>
+                    <p><span class="en">Highways, airports, and hydropower development</span><span
+                            class="jp">道路、空港、水力発電開発</span></p>
                 </div>
                 <div class="card">
                     <i class="bi bi-graduation-cap icon-lg"></i>
                     <h3><span class="en">Education Reform</span><span class="jp">教育改革</span></h3>
-                    <p><span class="en">Quality education and technical training for youth</span><span class="jp">質の高い教育と青少年への技術訓練</span></p>
+                    <p><span class="en">Quality education and technical training for youth</span><span
+                            class="jp">質の高い教育と青少年への技術訓練</span></p>
                 </div>
                 <div class="card">
                     <i class="bi bi-heart-pulse-fill icon-lg"></i>
                     <h3><span class="en">Healthcare</span><span class="jp">医療保険</span></h3>
-                    <p><span class="en">Universal healthcare and hospital upgrades</span><span class="jp">ユニバーサルヘルスケア病院改修</span></p>
+                    <p><span class="en">Universal healthcare and hospital upgrades</span><span
+                            class="jp">ユニバーサルヘルスケア病院改修</span></p>
                 </div>
             </div>
         </div>
@@ -454,7 +774,8 @@
 
     <!-- Slide 6: Leadership -->
     <section class="slide content-slide" data-index="5">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h2><span class="en">Leadership Philosophy</span><span class="jp">リーダシップ哲学</span></h2>
         <div class="content">
             <div class="card-grid" style="margin-bottom: 40px;">
@@ -475,7 +796,8 @@
                 </div>
             </div>
             <div class="quote">
-                <span class="en">"My mission is to transform Nepal into a prosperous, developed nation. Every Nepali deserves a better life."</span>
+                <span class="en">"My mission is to transform Nepal into a prosperous, developed nation. Every Nepali
+                    deserves a better life."</span>
                 <span class="jp">"私のミッションはネパールの繁栄した発展した国に変えることです。すべてのネパール人に明るい生活を届けることです。"</span>
                 <div class="quote-author">— Balen Shah</div>
             </div>
@@ -485,14 +807,16 @@
 
     <!-- Slide 7: Impact -->
     <section class="slide content-slide" data-index="6">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h2><span class="en">Public Reception</span><span class="jp">世論</span></h2>
         <div class="content">
             <div class="card-grid">
                 <div class="card">
                     <i class="bi bi-hand-thumbs-up-fill icon-lg"></i>
                     <h3><span class="en">Popular Support</span><span class="jp">民衆の支持</span></h3>
-                    <p><span class="en">Overwhelming mandate from youth and urban population</span><span class="jp">若者と都市住民からの強力な信任</span></p>
+                    <p><span class="en">Overwhelming mandate from youth and urban population</span><span
+                            class="jp">若者と都市住民からの強力な信任</span></p>
                 </div>
                 <div class="card">
                     <i class="bi bi-phone-fill icon-lg"></i>
@@ -502,7 +826,8 @@
                 <div class="card">
                     <i class="bi bi-star-fill icon-lg"></i>
                     <h3><span class="en">Hope Symbol</span><span class="jp">希望の象徴</span></h3>
-                    <p><span class="en">Inspiring Nepal's future generation</span><span class="jp">ネパールのfuture世代に影響</span></p>
+                    <p><span class="en">Inspiring Nepal's future generation</span><span
+                            class="jp">ネパールのfuture世代に影響</span></p>
                 </div>
             </div>
         </div>
@@ -511,7 +836,8 @@
 
     <!-- Slide 8: Thank You -->
     <section class="slide thankyou-slide" data-index="7">
-        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span></div>
+        <div class="attribution"><span class="en">Presented by Shila Shrestha</span><span class="jp">シラ・シュレスタ発表</span>
+        </div>
         <h1><span class="en">Thank You</span><span class="jp">ありがとう</span></h1>
         <p><span class="en">धन्यवाद | Questions & Discussion</span><span class="jp">質疑応答</span></p>
         <div class="slide-number">8 / 8</div>
@@ -538,8 +864,8 @@
         for (var i = 0; i < totalSlides; i++) {
             var dot = document.createElement('div');
             dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
-            dot.onclick = function(index) {
-                return function() { goToSlide(index); };
+            dot.onclick = function (index) {
+                return function () { goToSlide(index); };
             }(i);
             dotsContainer.appendChild(dot);
         }
@@ -547,14 +873,14 @@
         function goToSlide(index) {
             if (index < 0) index = 0;
             if (index >= totalSlides) index = totalSlides - 1;
-            
+
             currentSlide = index;
-            
+
             for (var i = 0; i < slides.length; i++) {
                 slides[i].classList.remove('active');
             }
             slides[currentSlide].classList.add('active');
-            
+
             updateDots();
         }
 
@@ -588,7 +914,7 @@
                 btns[i].classList.remove('active');
             }
             event.target.classList.add('active');
-            
+
             if (lang === 'jp') {
                 document.body.classList.add('show-jp');
             } else {
@@ -597,7 +923,7 @@
         }
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
                 e.preventDefault();
                 nextSlide();
@@ -609,11 +935,11 @@
 
         // Touch navigation
         var touchStartX = 0;
-        document.addEventListener('touchstart', function(e) {
+        document.addEventListener('touchstart', function (e) {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
 
-        document.addEventListener('touchend', function(e) {
+        document.addEventListener('touchend', function (e) {
             var diff = touchStartX - e.changedTouches[0].screenX;
             if (Math.abs(diff) > 50) {
                 if (diff > 0) nextSlide();
@@ -622,4 +948,5 @@
         }, { passive: true });
     </script>
 </body>
+
 </html>
